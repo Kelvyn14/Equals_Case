@@ -8,13 +8,16 @@ namespace Equals.Case.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AdquirenteController : ControllerBase
+    public class PeriodicidadeController : ControllerBase
     {
         public readonly IEqualsCaseRepository _repo;
-        public AdquirenteController(IEqualsCaseRepository repo)
+
+        public PeriodicidadeController(IEqualsCaseRepository repo)
         {
             _repo = repo;
         }
+
+
 
         // GET api/values
         [HttpGet]
@@ -22,7 +25,7 @@ namespace Equals.Case.WebAPI.Controllers
         {
             try
             {
-                var results = await _repo.GetAllAdquirentes();
+                var results = await _repo.GetAllPeriodicidades();
                 return Ok(results);
             }
             catch (System.Exception)
@@ -31,14 +34,13 @@ namespace Equals.Case.WebAPI.Controllers
             }
         }
 
-        // GET api/values/5
-        [HttpGet("{AdquirenteId}")]
-        public async Task<IActionResult> Get(int AdquirenteId)
+        [HttpGet("{periodicidadeId}")]
+        public async Task<IActionResult> Get(int periodicidadeId)
         {
             try
             {
-                var result = await _repo.GetAdquirenteWithArquivosByAdquirenteId(AdquirenteId);
-                return Ok(result);
+                var results = await _repo.GetPeriodicidadeById(periodicidadeId);
+                return Ok(results);
             }
             catch (System.Exception)
             {
@@ -47,14 +49,16 @@ namespace Equals.Case.WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(Adquirente adquirente)
+        public async Task<IActionResult> Post(Periodicidade periodicidade)
         {
             try
-            {                
-                _repo.Add(adquirente);
-                if(await _repo.SaveChangesAsync()){
-                   return Created($"/api/Adquirente/{adquirente.AdquirenteId}", adquirente);
-                }                
+            {
+                _repo.Add(periodicidade);
+                if (await _repo.SaveChangesAsync())
+                {
+                    return Created($"/api/Periodicidade/{periodicidade.PeriodicidadeId}", periodicidade);
+                }
+
             }
             catch (System.Exception)
             {

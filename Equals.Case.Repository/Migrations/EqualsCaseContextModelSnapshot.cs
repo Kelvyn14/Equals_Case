@@ -32,7 +32,7 @@ namespace Equals.Case.Repository.Migrations
 
             modelBuilder.Entity("Equals.Case.Domain.Model.Arquivo", b =>
                 {
-                    b.Property<int?>("ArquivoId")
+                    b.Property<int>("ArquivoId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("AdquirenteId");
@@ -41,15 +41,27 @@ namespace Equals.Case.Repository.Migrations
 
                     b.Property<string>("ArquivoLocalPath");
 
+                    b.Property<bool>("Baixado");
+
                     b.Property<string>("Conteudo");
 
                     b.Property<DateTime>("DataPrevisaoRecebimento");
 
-                    b.Property<DateTime?>("DataRecebimento");
+                    b.Property<DateTime?>("DataProcessamento");
+
+                    b.Property<long>("Estabelecimento");
 
                     b.Property<string>("Nome");
 
-                    b.Property<bool>("Recebido");
+                    b.Property<long>("NroSequencial");
+
+                    b.Property<DateTime?>("PeriodoFinal");
+
+                    b.Property<DateTime?>("PeriodoInicial");
+
+                    b.Property<int>("TipoRegistro");
+
+                    b.Property<byte[]>("fileBytes");
 
                     b.HasKey("ArquivoId");
 

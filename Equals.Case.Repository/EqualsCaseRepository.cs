@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Equals.Case.Domain.Model;
@@ -40,6 +41,22 @@ namespace Equals.Case.Repository
             return await query.ToArrayAsync();
         }
 
+         public async Task<Arquivo> GetArquivoById(int AarquivoId)
+        {
+            IQueryable<Arquivo> query = _context.Arquivos.Where(x => x.ArquivoId == AarquivoId);
+
+            return await query.FirstOrDefaultAsync();
+        }
+
+        public async Task<Arquivo> GetArquivoByDataPrevisaoEAdquirenteId(DateTime DataPrevisaoProcessamento, int AdquirenteId)
+        {
+            IQueryable<Arquivo> query = _context.Arquivos
+                                                .Where(x => x.DataPrevisaoRecebimento == DataPrevisaoProcessamento)
+                                                .Where(x => x.AdquirenteId == AdquirenteId);
+
+            return await query.FirstOrDefaultAsync();
+        }
+
         //ADQUIRENTE
          public async Task<Adquirente[]> GetAllAdquirentes()
         {
@@ -47,13 +64,34 @@ namespace Equals.Case.Repository
                                         .Include(a => a.Arquivos);
             return await query.ToArrayAsync();
         }
-        public async Task<Adquirente[]> GetAllAdquirentesWithArquivosByAdquirenteId(int AdquirenteId)
+        public async Task<Adquirente> GetAdquirenteWithArquivosByAdquirenteId(int AdquirenteId)
         {
             IQueryable<Adquirente> query = _context.Adquirentes
                                         .Include(a => a.Arquivos)
                                         .Where(x => x.AdquirenteId == AdquirenteId);
 
+            return await query.FirstOrDefaultAsync();
+        }
+
+         public async Task<Adquirente> GetAdquirenteByName(string AdquirenteNome)
+        {
+            IQueryable<Adquirente> query = _context.Adquirentes.Where(x => x.Nome.ToLower().Trim() == AdquirenteNome.ToLower().Trim());
+            return await query.FirstOrDefaultAsync();
+        }
+
+
+        //PERIODICICADE
+         public async Task<Periodicidade[]> GetAllPeriodicidades()
+        {
+            IQueryable<Periodicidade> query = _context.Periodicidades;
+
             return await query.ToArrayAsync();
+        }
+        public async Task<Periodicidade> GetPeriodicidadeById(int periodicidadeId)
+        {
+            IQueryable<Periodicidade> query = _context.Periodicidades.Where(x=>x.PeriodicidadeId == periodicidadeId);
+
+            return await query.FirstOrDefaultAsync();
         }
 
     }

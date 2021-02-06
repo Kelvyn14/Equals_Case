@@ -41,13 +41,19 @@ namespace Equals.Case.Repository.Migrations
                     ArquivoId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Nome = table.Column<string>(nullable: true),
-                    DataRecebimento = table.Column<DateTime>(nullable: true),
+                    fileBytes = table.Column<byte[]>(nullable: true),
+                    DataProcessamento = table.Column<DateTime>(nullable: true),
                     DataPrevisaoRecebimento = table.Column<DateTime>(nullable: false),
                     AdquirenteId = table.Column<int>(nullable: false),
                     Conteudo = table.Column<string>(nullable: true),
-                    Recebido = table.Column<bool>(nullable: false),
+                    Baixado = table.Column<bool>(nullable: false),
                     ArquivoLocalPath = table.Column<string>(nullable: true),
-                    ArquivoBackupPath = table.Column<string>(nullable: true)
+                    ArquivoBackupPath = table.Column<string>(nullable: true),
+                    TipoRegistro = table.Column<int>(nullable: false),
+                    Estabelecimento = table.Column<long>(nullable: false),
+                    PeriodoInicial = table.Column<DateTime>(nullable: true),
+                    PeriodoFinal = table.Column<DateTime>(nullable: true),
+                    NroSequencial = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
