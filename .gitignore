@@ -3,3 +3,5 @@ obj
 .vscode
 .vs
 .DS_Store
+files/
+filesBackup/
