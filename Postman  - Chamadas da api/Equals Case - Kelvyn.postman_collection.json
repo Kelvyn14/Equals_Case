@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "0e68ec94-14e6-4d62-a8f4-a7c5b1265d57",
+		"name": "Equals Case - Kelvyn",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cadastro de Periodicidades",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "//cadastro primeiro diario\r\n{\r\n    \"Periodo\":\"Diário\"\r\n}\r\n// descomenta segunda linha, comenta primeira linha e cadastra segundo periodo, semanal\r\n// {\r\n//     \"Periodo\":\"Semanal\"\r\n// }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Periodicidade",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Periodicidade"
+					]
+				},
+				"description": "Cadastro de Periodicidades"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Periodicidades",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Periodicidade",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Periodicidade"
+					]
+				},
+				"description": "Get Periodicidades"
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastro de Adquirente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "// cadastr de  primeira adquirente\r\n{\r\n    \"NOME\":\"UFLACARD\",\r\n    \"PERIODICIDADEID\":1\r\n}\r\n\r\n// cadastr de  segunda adquirente\r\n\r\n// {\r\n//     \"Nome\":\"FagammonCard \",\r\n//     \"PeriodicidadeId\":2\r\n// }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Adquirente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Adquirente"
+					]
+				},
+				"description": "Cadastro de Adquirente"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Adquirentes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Adquirente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Adquirente"
+					]
+				},
+				"description": "Get All Adquirentes"
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastro Previsao de Recebimento de arquivos por Adquirente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Arquivo/PrevisaoRecebimento?adquirenteId=1&previsaoInicio=1993-01-01&previsaoFinal=1993-01-31",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Arquivo",
+						"PrevisaoRecebimento"
+					],
+					"query": [
+						{
+							"key": "adquirenteId",
+							"value": "1"
+						},
+						{
+							"key": "previsaoInicio",
+							"value": "1993-01-01"
+						},
+						{
+							"key": "previsaoFinal",
+							"value": "1993-01-31"
+						}
+					]
+				},
+				"description": "Cadastro Previsao de Recebimento de arquivos por Adquirente"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete arquivo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Arquivo/?arquivoId=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Arquivo",
+						""
+					],
+					"query": [
+						{
+							"key": "arquivoId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Arquivo por Nome",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n        \"Nome\":\"098756432111993012619930126199301260000001UflaCard\"\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Arquivo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Arquivo"
+					],
+					"query": [
+						{
+							"key": "arquivo",
+							"value": "MDk4NzU2NDMyMTEyMDE5MDYyNjIwMTkwNjI1MjAxOTA2MjUwMDAwMDAxVWZsYUNhcmQ=",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Recebe os dados já no nome do arquivo e realiza a baixa"
+			},
+			"response": []
+		},
+		{
+			"name": "Post Arquivo por Arquivo base64",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n        \"fileBytes\":\"MDk4NzU2NDMyMTExOTkzMDEyNjE5OTMwMTI2MTk5MzAxMjYwMDAwMDAxVWZsYUNhcmQ=\"\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Arquivo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Arquivo"
+					],
+					"query": [
+						{
+							"key": "arquivo",
+							"value": "MDk4NzU2NDMyMTEyMDE5MDYyNjIwMTkwNjI1MjAxOTA2MjUwMDAwMDAxVWZsYUNhcmQ=",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
