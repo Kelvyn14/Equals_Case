@@ -42,7 +42,7 @@ namespace Equals.Case.WebAPI.Controllers
             {
                 var result = await _context.Periodicidades.FirstOrDefaultAsync(x => x.Id == id);
                 return Ok(result);
-            }
+            } 
             catch (System.Exception)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Banco de dados falhou");
