@@ -1,8 +1,8 @@
-namespace Equals.Case.WebAPI.Model
+namespace Equals.Case.Domain.Model
 {
     public class Periodicidade
     {
-        public int Id { get; set; }
+        public int PeriodicidadeId { get; set; }
         public string Periodo { get; set; }
     }
 }

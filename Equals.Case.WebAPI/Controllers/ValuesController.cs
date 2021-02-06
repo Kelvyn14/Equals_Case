@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Equals.Case.WebAPI.Data;
-using Equals.Case.WebAPI.Model;
+using Equals.Case.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,8 +13,8 @@ namespace Equals.Case.WebAPI.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        public readonly DataContext _context;
-        public ValuesController(DataContext context)
+        public readonly EqualsCaseContext _context;
+        public ValuesController(EqualsCaseContext context)
         {
             this._context = context;
         }
@@ -40,7 +39,7 @@ namespace Equals.Case.WebAPI.Controllers
         {
             try
             {
-                var result = await _context.Periodicidades.FirstOrDefaultAsync(x => x.Id == id);
+                var result = await _context.Periodicidades.FirstOrDefaultAsync(x => x.PeriodicidadeId == id);
                 return Ok(result);
             } 
             catch (System.Exception) 
